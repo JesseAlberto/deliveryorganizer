@@ -1,0 +1,124 @@
+.list-container{
+    color: #fff;
+    background-color: rgb(0, 0, 0);
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+
+    .drag-handel-dots{
+        font-size: 3em;
+        color: #fff;
+    }
+
+    .item{
+        color: #fff;
+        h3{
+            font-size: 1.5em;
+            margin-bottom: 0;
+        }
+        h4{
+            font-size: 1.1em;
+        }
+        .green{
+            color: rgb(49, 212, 49);
+        }
+        .red{
+            color: rgb(238, 53, 53) !important;
+        }
+    }
+}
+
+.small-modal-delete{
+    position: fixed;
+    width: 90%;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    background-color: white;
+    border-radius: 13px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    animation-name: show;
+    animation-duration: .2s;
+    animation-direction: forwards;
+    .p-info{
+        text-align: center;
+        i{
+            color: red;
+            font-size: 5em;
+        }
+        margin: 7.5%;
+    }
+    .button-info{
+        width: 100%;
+        display: flex;
+        button{
+            width: 50%;
+            &:first-child{
+                border-radius: 0;
+                border-right: solid 1px #000;
+            }
+        }
+    }
+}
+
+
+@keyframes show {
+    0%{transform:  translateY(-50%) scale(0);}
+    80%{transform:  translateY(-50%) scale(1.2);}
+    100%{transform:  translateY(-50%) scale(1);}
+}
+
+
+/**Drag and drop*/
+
+.dragdrop-wrapper {
+    width: 450px;
+    max-width: 100%;
+    border: solid 1px rgb(107, 107, 107);
+    min-height: 65px;
+    display: block;
+    background: white;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: #3d3d3d;
+    margin: 20px auto;
+  }
+  
+  .dragdrop-inner {
+    padding: 22px 12px;
+    color: rgba(0, 0, 0, 0.87);
+    border-bottom: solid 1px rgb(107, 107, 107);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    background: rgb(51, 51, 51);
+    font-size: 14px;
+  }
+  
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+  
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+  .dragdrop-inner:last-child {
+    border: none;
+  }
+  
+  .dragdrop-wrapper.cdk-drop-list-dragging 
+  .dragdrop-inner:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }

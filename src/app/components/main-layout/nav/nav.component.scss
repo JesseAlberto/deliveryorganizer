@@ -1,0 +1,40 @@
+.nav-container{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    padding: 20px 0;
+    border-top: solid 1px #fff;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: rgb(26, 25, 25);
+    .option{
+        text-align: center;
+        color: #fff;
+        font-size: 1.2em;
+        a{
+            text-decoration: none;
+            color: #fff;
+            &:hover{
+                text-decoration: none;
+                color: #fff;
+            }
+        }
+    }
+
+
+    .nav-click.ative{
+        animation-name: upscale;
+        animation-duration: .7s;
+        animation-timing-function: linear;
+    }
+}
+
+
+@keyframes upscale {
+    0% {transform: scale(0.9);}
+    25% {transform: scale(0.8);}
+    50% {transform: scale(1.2);}
+    75% {transform: scale(1.1);}
+    100% {transform: scale(1);}
+}

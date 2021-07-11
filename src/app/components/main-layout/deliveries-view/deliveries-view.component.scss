@@ -1,0 +1,53 @@
+.view-container{
+    width: 100%;
+    background-color: rgb(27, 27, 27);
+    color: #fff;
+    position: absolute;
+    min-height: 100%;
+    .swiper-container{
+        
+        .item-container{
+            display: block;
+            position: relative;
+            .item{
+                margin: 12.5vh 5%;
+                padding: 50px 5%;
+                width: 90%;
+                border-radius: 13px;
+                background-color: rgb(43, 42, 42);
+                border: solid 1px rgb(82, 82, 82);
+                color: #fff;
+                h1{
+                    font-size: 1.3em;
+                }
+                h2{
+                    font-size: 2em;
+                }
+                .buttons-container{
+                    width: 100%;
+                    button{
+                        width: 50%;
+                    }
+                }
+            }
+
+        }
+    }
+    .rota{
+        font-size: 3em;
+        margin-left: 10%;
+    }
+}
+
+.botao-imprimir-container{
+        position: fixed;
+        bottom: 80px;
+        right: 3px;
+        button{
+            i{
+                font-size: 3.5em;
+                color: #fff;
+            }
+        }
+
+}

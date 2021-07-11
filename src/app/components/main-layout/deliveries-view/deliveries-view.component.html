@@ -1,0 +1,39 @@
+<div class="view-container">
+    <div class="input-group">
+        <input [(ngModel)]="date" type="date" class="form-control" (change)="changeList()">
+    </div>
+    <div class="swiper-container">
+        <br>
+        <h1 class="rota">Rota:</h1>
+        <br>
+        <div *ngIf="deliveries && deliveries.length > 0; else elseDeliveries;">
+            <swiper 
+            [slidesPerView]="1" 
+            [spaceBetween]="0" 
+            (swiper)="onSwiper($event)" 
+            (slideChange)="onSlideChange()">
+                <ng-template *ngFor="let item of deliveries" swiperSlide>
+                    <div class="item-container">
+                        <div class="item">
+                            <h1>{{item.name}}</h1>
+                            <h2>{{item.value | currency: 'EUR'}}</h2>
+                            <div class="buttons-container">
+                                <button class="btn" [ngClass]="{'btn-success': item.paid, 'btn-danger': !item.paid}" (click)="togglePaid(item.id)" >{{item.paid ? 'Pago': 'POR PAGAR'}}</button>
+                                <button class="btn" [ngClass]="{'btn-success': item.delivered,'btn-danger': !item.delivered}" (click)="toggleDelivery(item.id)">{{item.delivered ? 'Entregue': 'POR ENTREGAR'}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </swiper>
+        </div>
+        <div class="botao-imprimir-container">
+            <button class="btn" [routerLink]="['/app/print', date]" routerLinkActive="router-link-active" >
+                <i class="fas fa-print"></i>
+            </button>
+        </div>
+    </div>
+    <ng-template #elseDeliveries>
+        <h1 style="color: #fff;">Empty</h1>
+    </ng-template>
+
+</div>

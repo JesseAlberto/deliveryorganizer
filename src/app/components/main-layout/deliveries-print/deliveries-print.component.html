@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="container-print" id="print-content">
+        <h2>RESUMO</h2>
+        <p *ngFor="let item of deliveries">{{item.name}} - {{item.value | currency: 'EUR'}} - Pago: {{item.paid ? 'Sim' : 'Nao'}}</p>
+    </div>
+    <button class="btn btn-primary" (click)="copy()">
+        <i class="fas fa-copy"></i>
+    </button>
+</div>

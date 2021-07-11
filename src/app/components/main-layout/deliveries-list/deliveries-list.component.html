@@ -1,0 +1,49 @@
+<div class="list-container">
+    <div class="input-group">
+        <input [(ngModel)]="date" type="date" class="form-control" (change)="changeList()">
+    </div>
+    <div *ngIf="deliveries.length > 0; else elseDeliveries;" cdkDropList (cdkDropListDropped)="reorderList($event)" class="dragdrop-wrapper">
+        <div class="dragdrop-inner" *ngFor="let del of deliveries" cdkDrag> 
+            <div class="fas fa-ellipsis-v drag-handel-dots" cdkDragHandle style="padding: 20px 15px;"></div>
+            <div class="item">
+                <h3>{{del.name}} </h3>
+                <h4>{{del.value | currency: 'EUR'}}</h4>
+                <p>
+                    <span >Pago : 
+                        <span class="green" [ngClass]="{'red': !del.paid}">{{del.paid ? 'Sim' : 'Nao' }}</span>
+                    </span>
+                     - 
+                    <span >Entregue :
+                        <span class="green" [ngClass]="{'red': !del.delivered}">{{del.delivered ? 'Sim' : 'Nao' }}</span>
+                    </span>
+                </p>
+            </div>
+            <div class="botoes">
+                <button  class="fas fa-edit btn btn-warning" style="margin-right: 15px;"
+                [routerLink]="['/app/edit', del.id]"></button>
+                <button class="fas fa-trash-alt btn btn-danger"
+                (click)="OpenDeleteDelivery(del.id)" routerLinkActive="router-link-active" ></button>
+            </div>
+        </div>
+    </div>
+    <ng-template #elseDeliveries>
+        <h1 style="color: #fff;">Empty</h1>
+    </ng-template>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+
+<div class="small-modal-delete" *ngIf="idToDelete.length > 0">
+    <div class="p-info">
+        <i class="fas fa-exclamation-triangle"></i>
+        <hr>
+        <p>Tem a certeza que quer apagar a Encomenda com o id:</p>
+        <p>{{idToDelete}}</p>
+    </div>
+    <div class="button-info">
+        <button class="btn" (click)="deleteDel(true)">Sim</button>
+        <button class="btn" (click)="deleteDel(false)">Nao</button>
+    </div>
+</div>
